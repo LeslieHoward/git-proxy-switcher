@@ -1,18 +1,25 @@
 import React from 'react';
+import { Button } from 'antd';
+import { ipcRenderer } from 'electron';
 import styles from './index.css';
-import { formatMessage } from 'umi-plugin-locale';
-export default function() {
+
+export default function Index() {
+  React.useEffect(() => {
+    console.log('重载了');
+    ipcRenderer.on('MESSAGE_REPLY', (event, arg) => {
+      console.log('主线程答复', arg);
+    });
+  }, []);
+
+  const sendMessage = () => {
+    ipcRenderer.send('MESSAGE', '我发过去了');
+  };
+
   return (
     <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            {formatMessage({ id: 'index.start' })}
-          </a>
-        </li>
-      </ul>
+      <Button type="primary" onClick={sendMessage}>
+        点击发送
+      </Button>
     </div>
   );
 }

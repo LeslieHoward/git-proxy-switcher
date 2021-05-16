@@ -7,7 +7,7 @@ module.exports = merge.smart(baseConfig, {
   mode: 'development',
   target: 'electron-main',
   entry: {
-    main: './electron/index.ts',
+    main: './electronMain/index.ts',
   },
   module: {
     rules: [

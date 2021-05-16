@@ -11,8 +11,9 @@
     "strict": true,
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@tmp/*": ["src/pages/.umi/*"]
+      "@/*": ["./src/*"],
+      "@@/*": ["./src/.umi/*"],
+      "Cfg/*": ["config/*"]
     },
     "allowSyntheticDefaultImports": true
   },

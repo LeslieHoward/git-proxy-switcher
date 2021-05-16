@@ -1,8 +1,5 @@
-export const dva = {
-  config: {
-    onError(err: ErrorEvent) {
-      err.preventDefault();
-      console.error(err.message);
-    },
-  },
-};
+import observer from '@/utils/communicate';
+import 'moment/locale/zh-cn';
+
+// 挂载全局通信模块
+window.$observer = observer;
