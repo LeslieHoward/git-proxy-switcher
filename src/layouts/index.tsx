@@ -1,7 +1,6 @@
 import React from 'react';
 import type { BasicLayoutProps as ProLayoutProps, MenuDataItem } from '@ant-design/pro-layout';
 import ProLayout from '@ant-design/pro-layout';
-import { Avatar } from 'antd';
 import type { Dispatch } from 'umi';
 import { connect } from 'dva';
 import _ from 'lodash';

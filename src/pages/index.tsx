@@ -1,25 +1,25 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Space, Switch } from 'antd';
 import { ipcRenderer } from 'electron';
-import styles from './index.css';
+import styles from './index.less';
 
 export default function Index() {
   React.useEffect(() => {
-    console.log('重载了');
     ipcRenderer.on('MESSAGE_REPLY', (event, arg) => {
-      console.log('主线程答复', arg);
+      console.log('Message from Main-Process:', arg);
     });
   }, []);
 
-  const sendMessage = () => {
-    ipcRenderer.send('MESSAGE', '我发过去了');
+  const onChange = (checked: boolean) => {
+    ipcRenderer.send('MESSAGE', checked);
   };
 
   return (
-    <div className={styles.normal}>
-      <Button type="primary" onClick={sendMessage}>
-        点击发送
-      </Button>
+    <div className={styles.container}>
+      <Space>
+        <label>是否开启Git代理：</label>
+        <Switch onChange={onChange} />
+      </Space>
     </div>
   );
 }

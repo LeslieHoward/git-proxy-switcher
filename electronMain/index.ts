@@ -60,6 +60,6 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('MESSAGE', (event, arg) => {
-  console.log('renderer', arg);
-  event.reply('MESSAGE_REPLY', '收到了');
+  console.log('Message from the Renderer-Process: ', arg);
+  event.reply('MESSAGE_REPLY', 'Get the message.');
 });
